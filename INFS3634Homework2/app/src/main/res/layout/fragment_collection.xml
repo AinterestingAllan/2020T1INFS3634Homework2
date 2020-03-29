@@ -6,9 +6,22 @@
     tools:context=".CollectionFragment">
 
     <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:layout_height="651dp"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="你的收藏"
+            android:textAlignment="center" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/coll_rv"
+            android:layout_width="match_parent"
+            android:layout_height="555dp" />
+    </LinearLayout>
+
 
 </FrameLayout>

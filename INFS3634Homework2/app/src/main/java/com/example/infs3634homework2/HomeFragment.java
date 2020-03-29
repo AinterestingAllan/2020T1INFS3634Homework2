@@ -54,6 +54,12 @@ public class HomeFragment extends Fragment {
         hf_rv.setLayoutManager(new LinearLayoutManager(currentActivity));
         // 给这个rv设置adpater
         HomeAdapter thisAdapter = new HomeAdapter();
+
+        // 设置数据
+        thisAdapter.setCurrData(Restaurant.getRestaurants());
+        // 设置一个Activity
+        thisAdapter.setCurrActivity(currentActivity);
+
         hf_rv.setAdapter(thisAdapter);
 
         return view;

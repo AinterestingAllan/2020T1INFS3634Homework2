@@ -1,8 +1,11 @@
 package com.example.infs3634homework2;
 
+import android.app.Activity;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -59,6 +62,19 @@ public class CollectionFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_collection, container, false);
+        View view = inflater.inflate(R.layout.fragment_collection, container, false);
+        RecyclerView collRv = view.findViewById(R.id.coll_rv);
+
+        Activity currentActivity = getActivity();
+        collRv.setLayoutManager(new LinearLayoutManager(currentActivity));
+
+        HomeAdapter homeAdapter = new HomeAdapter();
+        homeAdapter.setCurrData(Restaurant.getCollRestaurants());
+
+        homeAdapter.setCurrActivity(currentActivity);
+
+        collRv.setAdapter(homeAdapter);
+
+        return view;
     }
 }

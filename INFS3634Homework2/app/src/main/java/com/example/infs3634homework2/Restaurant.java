@@ -4,40 +4,54 @@ import java.util.ArrayList;
 
 // Model : Restaurant class
 public class Restaurant {
+
+    static Restaurant currDetailRest = null;
+
+    // 所有的餐厅
     static private ArrayList<Restaurant> restaurants = new ArrayList<>();
+
+    // 用户收藏的餐厅
+    static private ArrayList<Restaurant> collRestaurants = new ArrayList<>();
 
     // 餐厅属性
     private int id;
     private String name;
     private double rank;
+    private int image;
+    private boolean light = false;
     // 可以拓展 根据自己的需要。。。
 
     // 构造方法
-    public Restaurant(int id, String name, double rank) {
+    public Restaurant(int id, String name, double rank, int image) {
         this.id = id;
         this.name = name;
         this.rank = rank;
+        this.image = image;
     }
 
     static {
-        restaurants.add(new Restaurant(1,"刘安餐厅1", 4.9));
-        restaurants.add(new Restaurant(2,"刘安餐厅2", 4.6));
-        restaurants.add(new Restaurant(3,"刘安餐厅3", 4.9));
-        restaurants.add(new Restaurant(4,"刘安餐厅4", 4.9));
-        restaurants.add(new Restaurant(5,"刘安餐厅5", 4.9));
-        restaurants.add(new Restaurant(6,"刘安餐厅6", 4.8));
-        restaurants.add(new Restaurant(7,"刘安餐厅7", 3.5));
-        restaurants.add(new Restaurant(8,"刘安餐厅8", 4.9));
-        restaurants.add(new Restaurant(9,"刘安餐厅9", 4.9));
-        restaurants.add(new Restaurant(9,"刘安餐厅10", 4.9));
+        restaurants.add(new Restaurant(1,"刘安餐厅1", 4.9, R.drawable.r1));
+        restaurants.add(new Restaurant(2,"刘安餐厅2", 4.6, R.drawable.r2));
     }
 
     // alt + insert
+
+
+    public int getImage() {
+        return image;
+    }
+
+    public void setImage(int image) {
+        this.image = image;
+    }
 
     // 以后如果要调用我们的餐厅数据则需要 Restaurant.getRestaurants() 恒等于 Restaurant.restaurants
     public static ArrayList<Restaurant> getRestaurants() {
         return restaurants;
     }
+
+    // Restaurant.getCollRestaurants()
+    public static ArrayList<Restaurant> getCollRestaurants() {return collRestaurants;}
 
     // 问题： 如果我想知道刘安餐厅7的rank应该怎么获得？
     // Restaurant.getRestaurants().get(6).getRank() 恒等于 3.5（double类型）+""
@@ -64,5 +78,13 @@ public class Restaurant {
 
     public void setRank(double rank) {
         this.rank = rank;
+    }
+
+    public boolean isLight() {
+        return light;
+    }
+
+    public void setLight(boolean light) {
+        this.light = light;
     }
 }
